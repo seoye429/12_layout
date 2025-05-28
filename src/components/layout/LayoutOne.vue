@@ -6,7 +6,7 @@
           <v-list-item title="Navigation drawer" link></v-list-item>
         </v-list>
       </v-navigation-drawer>
-      <v-main class="d-flex alien-center justify-center" height="300">
+      <v-main class="d-flex align-center justify-center" height="300">
         <v-container>
           <v-sheet
               border="dashed md"
@@ -21,6 +21,3 @@
     </v-layout>
 </template>
 
-<script setup lang="ts">
-  //
-</script>
