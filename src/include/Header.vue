@@ -8,6 +8,24 @@
     <v-menu offset-y>
         <template #activator="{props}">
             <v-btn v-bind="props" text>
+                Vue
+                <v-icon end>mdi-menu-down</v-icon>
+            </v-btn>
+        </template>
+        <v-list>
+            <v-list-item
+            v-for="(vues,index) in vuesItems" 
+            :key="index"
+            @click="navigate(vues.link)"
+            >
+                <v-list-item-title>{{ vues.title }}</v-list-item-title>
+            </v-list-item>
+        </v-list>
+    </v-menu>
+
+    <v-menu offset-y>
+        <template #activator="{props}">
+            <v-btn v-bind="props" text>
                 Vuetify
                 <v-icon end>mdi-menu-down</v-icon>
             </v-btn>
@@ -16,28 +34,32 @@
             <v-list-item
             v-for="(item,index) in menuItems" 
             :key="index"
-            @click="navigate(item,link)"
+            @click="navigate(item.link)"
             >
                 <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item>
         </v-list>
     </v-menu>
-    <v-btn text :to="'/dir'" >뷰디렉티브Dir</v-btn>
-    <v-btn text :to="'/events'" >이벤트</v-btn>
-    <v-btn text :to="'/bread'" >빵부스러기bread</v-btn>
-    <v-btn text :to="'/nav1'" >nav1</v-btn>
-    <v-btn text :to="'/nav2'">nav2</v-btn>
-    <v-btn text :to="'/nav3'" >nav3</v-btn>
-    <v-btn text :to="'/nav4'" >nav4</v-btn>
-    <v-btn text :to="'/nav5'" >nav5</v-btn>
-    <v-btn text :to="'/tabs'">Tabs</v-btn>
-    <v-btn text :to="'/button'" >button</v-btn>
-    <v-btn text :to="'/fbutton'">Flaoting Btn</v-btn>
-    <v-btn text :to="'/bottom1'" >Bottom navi</v-btn> 
-    <v-btn text :to="'/hello'" >hello</v-btn>
-    <v-btn text :to="'/tooltip'">tooltip툴팁</v-btn>
-    <v-btn text :to="'/footers'">footers</v-btn>
-    <v-btn text :to="'/page'">페이지네이션</v-btn>
+
+     <v-menu offset-y>
+        <template #activator="{props}">
+            <v-btn v-bind="props" text>
+                Nav
+                <v-icon end>mdi-menu-down</v-icon>
+            </v-btn>
+        </template>
+        <v-list>
+            <v-list-item
+            v-for="(nav,index) in navItems" 
+            :key="index"
+            @click="navigate(nav.link)"
+            >
+                <v-list-item-title>{{ nav.title }}</v-list-item-title>
+            </v-list-item>
+        </v-list>
+    </v-menu>
+
+
     
 </v-app-bar>
 
@@ -50,22 +72,34 @@
 <script setup>
 import {ref} from 'vue';
 
-const menuItems=ref([
-    {title:'뷰디렉티브',link:'/dir'},
+const vuesItems=ref([
+    {title:'뷰디렉티브Dir',link:'/dir'},
     {title:'이벤트',link:'/events'},
+])
+
+const menuItems=ref([
     {title:'빵부스러기bread',link:'/bread'},
+    {title:'Tabs',link:'/tabs'},
+    {title:'button',link:'/button'},
+    {title:'Flaoting Btn',link:'/fbutton'},
+    {title:'Bottom navi',link:'/bottom1'},
+    {title:'hello',link:'hello'},
+    {title:'tooltip툴팁',link:'tooltip'},
+    {title:'footers',link:''},
+    {title:'페이지네이션',link:'page'},
+])
+
+const navItems=ref([
     {title:'nav1',link:'/nav1'},
     {title:'nav2',link:'/nav2'},
     {title:'nav3',link:'/nav3'},
     {title:'nav4',link:'/nav4'},
     {title:'nav5',link:'/nav5'},
-    {title:'button',link:'/button'},
-    {title:'Flaoting Btn',link:'/fbutton'},
-    {title:'Bottom navi',link:'/bottom1'},
-    {title:'',link:''},
-    {title:'',link:''},
-
 ])
+
+
+
+
 
 //add
 import { useRouter } from 'vue-router'
