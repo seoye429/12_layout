@@ -4,8 +4,27 @@
     <v-toolbar-title>Vuetify reference</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-btn text :to="'/home'" >Home</v-btn>
-    <v-btn text :to="'/dir'" >뷰디렉티브</v-btn>
-    <v-btn text :to="'/bread'" >빵부스러기</v-btn>
+
+    <v-menu offset-y>
+        <template #activator="{props}">
+            <v-btn v-bind="props" text>
+                Vuetify
+                <v-icon end>mdi-menu-down</v-icon>
+            </v-btn>
+        </template>
+        <v-list>
+            <v-list-item
+            v-for="(item,index) in menuItems" 
+            :key="index"
+            @click="navigate(item,link)"
+            >
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item>
+        </v-list>
+    </v-menu>
+    <v-btn text :to="'/dir'" >뷰디렉티브Dir</v-btn>
+    <v-btn text :to="'/events'" >이벤트</v-btn>
+    <v-btn text :to="'/bread'" >빵부스러기bread</v-btn>
     <v-btn text :to="'/nav1'" >nav1</v-btn>
     <v-btn text :to="'/nav2'">nav2</v-btn>
     <v-btn text :to="'/nav3'" >nav3</v-btn>
@@ -28,4 +47,32 @@
 
 </template>
 
+<script setup>
+import {ref} from 'vue';
 
+const menuItems=ref([
+    {title:'뷰디렉티브',link:'/dir'},
+    {title:'이벤트',link:'/events'},
+    {title:'빵부스러기bread',link:'/bread'},
+    {title:'nav1',link:'/nav1'},
+    {title:'nav2',link:'/nav2'},
+    {title:'nav3',link:'/nav3'},
+    {title:'nav4',link:'/nav4'},
+    {title:'nav5',link:'/nav5'},
+    {title:'button',link:'/button'},
+    {title:'Flaoting Btn',link:'/fbutton'},
+    {title:'Bottom navi',link:'/bottom1'},
+    {title:'',link:''},
+    {title:'',link:''},
+
+])
+
+//add
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+function navigate(link) {
+  router.push(link)
+}
+</script>
