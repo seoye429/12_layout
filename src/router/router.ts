@@ -18,6 +18,10 @@ import Tabs from '../components/coms/Tabs.vue';
 import Page from '../components/coms/Page.vue';
 import Dir from '../components/ref/Dir.vue';
 import Events from '../components/ref/Events.vue';
+import Met from '../components/ref/Met.vue';
+import Comp from '../components/ref/Comp.vue';
+import Vmodel from '../components/ref/Vmodel.vue';
+import Wat from '../components/ref/Wat.vue';
 
 const routes = [
    { path: '/', redirect: '/home' }, // 기본 리디렉션
@@ -39,6 +43,10 @@ const routes = [
   { path: '/page', component: Page},
   { path: '/dir', component: Dir},
   { path: '/events', component: Events},
+  { path: '/met', component: Met},
+  { path: '/comp', component: Comp},
+  { path: '/vmodel', component: Vmodel},
+  { path: '/watchers', component: Wat},
 ]
 
 const router = createRouter({
